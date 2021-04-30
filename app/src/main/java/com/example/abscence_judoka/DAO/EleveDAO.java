@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import com.example.abscence_judoka.Metier.Eleve;
+import com.example.abscence_judoka.Metier.Telephone;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -63,7 +64,6 @@ public class EleveDAO extends DAO<Eleve> {
     // suppression de la matière en fonction de son numéro
 
     public Eleve read(int id){
-
         Eleve eleveRetour;
         String prenomEleve, nomEleve;
         Date dateNaissance;
@@ -86,7 +86,11 @@ public class EleveDAO extends DAO<Eleve> {
 
             idCategorieEleve = curseurQuery.getInt(4);
             idCeintureEleve = curseurQuery.getInt(5);
+
+            ArrayList<Telephone> tels;
+            tels = getTelephones(id);
             eleveRetour = new Eleve(idEleve, nomEleve, prenomEleve, dateNaissance, idCategorieEleve, idCeintureEleve);
+            eleveRetour.setTelephonesEleve(tels);
         }
         curseurQuery.close();
         return (eleveRetour);
@@ -120,7 +124,11 @@ public class EleveDAO extends DAO<Eleve> {
             idCategorieEleve = curseurQuery.getInt(4);
             idCeintureEleve = curseurQuery.getInt(5);
 
+            ArrayList<Telephone> tels;
+            tels = getTelephones(idEleve);
+
             eleves.add(new Eleve(idEleve, nomEleve, prenomEleve, dateNaissance, idCategorieEleve, idCeintureEleve));
+            eleves.get(eleves.size()-1).setTelephonesEleve(tels);
 
             curseurQuery.moveToNext();
         }
@@ -128,4 +136,19 @@ public class EleveDAO extends DAO<Eleve> {
         return (eleves);
     }
     // Retourne la liste de toutes les matières enregistrées dans la base.
+
+    public ArrayList<Telephone> getTelephones(int id) {
+        ArrayList<Telephone> telephones;
+        telephones = new ArrayList<Telephone>();
+
+        Cursor curseurQuery = db.query("TELEPHONE", null, "NUMEROTELEPHONE = "+id, null, null, null, null);
+        curseurQuery.moveToFirst();
+
+        while(!curseurQuery.isAfterLast()) {
+            telephones.add(new Telephone(curseurQuery.getInt(0), curseurQuery.getString(1)));
+            curseurQuery.moveToNext();
+        }
+        curseurQuery.close();
+        return (telephones);
+    }
 }
