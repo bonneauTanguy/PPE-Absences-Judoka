@@ -7,38 +7,27 @@
     tools:context=".IHM.eleves">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/accueil"
         android:layout_width="259dp"
         android:layout_height="45dp"
         android:text="accueil"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button7"
+        app:layout_constraintEnd_toStartOf="@+id/bCalendrier"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.025" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/bCalendrier"
         android:layout_width="259dp"
         android:layout_height="45dp"
         android:text="calendrier"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button8"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/accueil"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.025" />
 
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="259dp"
-        android:layout_height="45dp"
-        android:text="Eleves"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button7"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
 </androidx.constraintlayout.widget.ConstraintLayout>
