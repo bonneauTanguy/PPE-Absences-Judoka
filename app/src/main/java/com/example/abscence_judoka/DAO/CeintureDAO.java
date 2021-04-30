@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.example.abscence_judoka.Metier.Ceinture;
 
@@ -41,7 +40,6 @@ public class CeintureDAO extends DAO<Ceinture> {
     // modification du nom et coefficient de la matière en fonction du numéro
 
     public void delete(Ceinture obj) {
-        Log.v("Supp","ça marche");
         db.delete(TABLE_CEINTURE, COL_ID_CEINTURE+" = "+obj.getIdCeinture(),null);
     }
     // suppression de la matière en fonction de son numéro

@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.example.abscence_judoka.Metier.Categorie;
 
@@ -41,7 +40,6 @@ public class CategorieDAO extends DAO<Categorie> {
     // modification du nom et coefficient de la matière en fonction du numéro
 
     public void delete(Categorie obj) {
-        Log.v("Supp","ça marche");
         db.delete(TABLE_CATEGORIE, COL_ID_CATEGORIE+" = "+obj.getIdCategorie(),null);
     }
     // suppression de la matière en fonction de son numéro
