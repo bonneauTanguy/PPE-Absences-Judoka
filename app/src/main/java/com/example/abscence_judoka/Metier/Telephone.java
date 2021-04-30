@@ -2,12 +2,12 @@ package com.example.abscence_judoka.Metier;
 
 public class Telephone {
     private int idTelephone;
-    private int numeroTelephone;
+    private String numeroTelephone;
 
     /* Pas encore prévu */
     // private String TypeTelephone;
 
-    public Telephone(int idTel, int numeroTel) {
+    public Telephone(int idTel, String numeroTel) {
         this.idTelephone = idTel;
         this.numeroTelephone = numeroTel;
     }
@@ -20,11 +20,11 @@ public class Telephone {
         this.idTelephone = idTelephone;
     }
 
-    public int getNumeroTelephone() {
+    public String getNumeroTelephone() {
         return numeroTelephone;
     }
 
-    public void setNumeroTelephone(int numeroTelephone) {
+    public void setNumeroTelephone(String numeroTelephone) {
         this.numeroTelephone = numeroTelephone;
     }
 }
