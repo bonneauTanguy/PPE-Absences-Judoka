@@ -1,6 +1,8 @@
 package com.example.abscence_judoka.Metier;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Eleve {
     private int idEleve;
@@ -9,6 +11,7 @@ public class Eleve {
     private Date dateNaissanceEleve;
     private int idCategorieEleve;
     private int idCeintureEleve;
+    private List<Telephone> telephonesEleve;
 
     public Eleve(int idEl, String nomEl, String prenEl, Date dateNaisEl, int idCat, int idCeint) {
         this.idEleve = idEl;
@@ -17,6 +20,7 @@ public class Eleve {
         this.dateNaissanceEleve = dateNaisEl;
         this.idCategorieEleve = idCat;
         this.idCeintureEleve = idCeint;
+        this.telephonesEleve = new ArrayList<Telephone>();
     }
 
     public int getIdEleve() {
@@ -65,5 +69,13 @@ public class Eleve {
 
     public void setIdCeintureEleve(int idCeintureEleve) {
         this.idCeintureEleve = idCeintureEleve;
+    }
+
+    public List<Telephone> getTelephonesEleve() {
+        return telephonesEleve;
+    }
+
+    public void setTelephonesEleve(List<Telephone> telephonesEleve) {
+        this.telephonesEleve = telephonesEleve;
     }
 }
