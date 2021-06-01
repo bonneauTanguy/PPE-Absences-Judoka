@@ -9,7 +9,15 @@ public class Eleve {
     private Date dateNaissanceEleve;
     private int idCategorieEleve;
     private int idCeintureEleve;
+    public Eleve(int id, String nom){
+        this.idEleve = id;
+        nomEleve = nom;
+        prenomEleve="";
+        dateNaissanceEleve=null;
+        idCategorieEleve=0;
+        idCeintureEleve=0;
 
+    }
     public Eleve(int idEl, String nomEl, String prenEl, Date dateNaisEl, int idCat, int idCeint) {
         this.idEleve = idEl;
         this.nomEleve = nomEl;

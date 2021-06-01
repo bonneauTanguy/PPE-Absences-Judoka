@@ -104,11 +104,18 @@ public class EleveDAO extends DAO<Eleve> {
         eleve = null;
         dateNaissance = null;
 
-
-        Cursor curseurQuery = db.query(TABLE_ELEVE, null, null, null, null, null, null);
+        db.isOpen();
+        Cursor curseurQuery = db.query(TABLE_ELEVE, new String[]{"IDELEVE, NOMELEVE"},null, null, null, null, null, null);
         curseurQuery.moveToFirst();
+        for(int i=1; i<= curseurQuery.getCount(); i++){
 
-        while(!curseurQuery.isAfterLast()) {
+            eleve= new Eleve(curseurQuery.getInt(0),curseurQuery.getString(1)/*, curseurQuery.getString(3), dateFormat.parse(curseurQuery.getString(4)), curseurQuery.getInt(5), curseurQuery.getInt(6)*/);
+
+            eleves.add(eleve);
+            curseurQuery.moveToNext();
+        }
+
+        /*while(!curseurQuery.isAfterLast()) {
             idEleve = curseurQuery.getInt(0);
             nomEleve = curseurQuery.getString(1);
             prenomEleve = curseurQuery.getString(2);
@@ -123,8 +130,9 @@ public class EleveDAO extends DAO<Eleve> {
             eleves.add(new Eleve(idEleve, nomEleve, prenomEleve, dateNaissance, idCategorieEleve, idCeintureEleve));
 
             curseurQuery.moveToNext();
-        }
+        }*/
         curseurQuery.close();
+        close();
         return (eleves);
     }
     // Retourne la liste de toutes les matières enregistrées dans la base.

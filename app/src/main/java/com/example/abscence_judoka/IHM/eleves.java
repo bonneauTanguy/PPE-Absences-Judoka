@@ -48,16 +48,15 @@ public class eleves extends AppCompatActivity {
                 Toast.makeText(eleves.this, nom, Toast.LENGTH_LONG).show();
             }
         });*/
-        ListView lvEleve = findViewById(R.id.lvEleve);
-        ArrayList<Eleve> values;
-        SQLiteDatabase bdd;
+        ListView lvEleve = (ListView) findViewById(R.id.lvEleve);
+        ArrayList<Eleve> values = new ArrayList<Eleve>();
         EleveDAO bdd = new EleveDAO(this);
-        bdd.open;
-        values = new ArrayList<>();
+        bdd.open();
+
         values = bdd.read();
 
         //log.v("test",values.toString());
-        ArrayAdapter<EleveDAO> listEleveAdaptater = new ArrayAdapter<EleveDAO>(this, android.R.layout.single_item., values);
+        ArrayAdapter<Eleve> listEleveAdaptater = new ArrayAdapter<Eleve>(this, android.R.layout.simple_list_item_1, values);
         lvEleve.setAdapter(listEleveAdaptater);
     }
 
@@ -77,7 +76,4 @@ public class eleves extends AppCompatActivity {
         }
     };
 
-    private listView{
-
-    }
 }
