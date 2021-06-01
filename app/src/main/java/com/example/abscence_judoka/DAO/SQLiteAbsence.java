@@ -3,10 +3,16 @@ package com.example.abscence_judoka.DAO;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.SimpleCursorAdapter;
+
+import com.example.abscence_judoka.Metier.Eleve;
+import com.example.abscence_judoka.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLiteAbsence extends SQLiteOpenHelper {
 
@@ -43,6 +49,18 @@ public class SQLiteAbsence extends SQLiteOpenHelper {
             }
         }
     }
+
+   /* public SimpleCursorAdapter ListViewBDD(){
+        EleveDAO eleve = new EleveDAO(context);
+        List<Eleve> listeEleve= eleve.read();
+        SimpleCursorAdapter listeEleveAdapter = new SimpleCursorAdapter(
+                context,
+                R.layout.single_item,
+                listeEleve,
+        );
+        return  listeEleveAdapter;
+    }*/
+
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         onCreate(db);

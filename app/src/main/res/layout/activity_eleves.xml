@@ -30,4 +30,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.025" />
 
+    <ListView
+        android:id="@+id/lvEleve"
+        android:layout_width="835dp"
+        android:layout_height="511dp"
+        tools:layout_editor_absoluteX="223dp"
+        tools:layout_editor_absoluteY="76dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
