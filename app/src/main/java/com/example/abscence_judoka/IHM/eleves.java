@@ -26,6 +26,7 @@ import java.util.ArrayList;
 public class eleves extends AppCompatActivity {
     private Button calendrier;
     private Button accueil;
+    private Button ajouter;
 
 
 
@@ -37,6 +38,8 @@ public class eleves extends AppCompatActivity {
         calendrier.setOnClickListener(calendrierListener);
         accueil = (Button) findViewById(R.id.accueil);
         accueil.setOnClickListener(accueilListener);
+        ajouter = (Button) findViewById(R.id.bAjouter1);
+        ajouter.setOnClickListener(ajouterListener);
         /*SimpleCursorAdapter curseurAdapter = SQLiteAbsence.ListViewBDD();
         lvEleve.setAdapter(curseurAdapter);
         lvEleve.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -72,6 +75,14 @@ public class eleves extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), MainActivity.class);
+            startActivityForResult(intent, 0);
+        }
+    };
+
+    private View.OnClickListener ajouterListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), formAjoutEleve.class);
             startActivityForResult(intent, 0);
         }
     };
