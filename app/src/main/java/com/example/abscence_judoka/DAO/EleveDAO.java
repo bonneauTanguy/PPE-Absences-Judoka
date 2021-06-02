@@ -71,7 +71,7 @@ public class EleveDAO extends DAO<Eleve> {
 
         eleveRetour = null;
         dateNaissance = null;
-
+        db.isOpen();
         Cursor curseurQuery = db.query(TABLE_ELEVE, null, COL_ID_ELEVE+" = "+id, null, null, null, null);
         curseurQuery.moveToFirst();
         if (!curseurQuery.isAfterLast()) {
@@ -103,7 +103,6 @@ public class EleveDAO extends DAO<Eleve> {
 
         eleve = null;
         dateNaissance = null;
-
         db.isOpen();
         Cursor curseurQuery = db.query(TABLE_ELEVE, new String[]{"IDELEVE, NOMELEVE"},null, null, null, null, null, null);
         curseurQuery.moveToFirst();
