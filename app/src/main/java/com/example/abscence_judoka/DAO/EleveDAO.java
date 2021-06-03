@@ -89,6 +89,7 @@ public class EleveDAO extends DAO<Eleve> {
             eleveRetour = new Eleve(idEleve, nomEleve, prenomEleve, dateNaissance, idCategorieEleve, idCeintureEleve);
         }
         curseurQuery.close();
+
         return (eleveRetour);
     }
     // Recherche le numéro de la matière dans la base et la retourne
@@ -104,11 +105,11 @@ public class EleveDAO extends DAO<Eleve> {
         eleve = null;
         dateNaissance = null;
         db.isOpen();
-        Cursor curseurQuery = db.query(TABLE_ELEVE, new String[]{"IDELEVE, NOMELEVE"},null, null, null, null, null, null);
+        Cursor curseurQuery = db.query(TABLE_ELEVE /*new String[]{"IDELEVE, NOMELEVE, PRENOMELEVE"}*/,null, null, null, null, null, null);
         curseurQuery.moveToFirst();
         for(int i=1; i<= curseurQuery.getCount(); i++){
 
-            eleve= new Eleve(curseurQuery.getInt(0),curseurQuery.getString(1)/*, curseurQuery.getString(3), dateFormat.parse(curseurQuery.getString(4)), curseurQuery.getInt(5), curseurQuery.getInt(6)*/);
+            eleve= new Eleve(curseurQuery.getInt(0),curseurQuery.getString(1), curseurQuery.getString(2)/*,dateFormat.parse(curseurQuery.getString(4)), curseurQuery.getInt(5), curseurQuery.getInt(6)*/);
 
             eleves.add(eleve);
             curseurQuery.moveToNext();
@@ -131,7 +132,7 @@ public class EleveDAO extends DAO<Eleve> {
             curseurQuery.moveToNext();
         }*/
         curseurQuery.close();
-        close();
+
         return (eleves);
     }
     // Retourne la liste de toutes les matières enregistrées dans la base.

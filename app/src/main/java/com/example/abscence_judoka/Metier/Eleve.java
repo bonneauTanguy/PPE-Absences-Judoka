@@ -9,10 +9,10 @@ public class Eleve {
     private Date dateNaissanceEleve;
     private int idCategorieEleve;
     private int idCeintureEleve;
-    public Eleve(int id, String nom){
+    public Eleve(int id, String nom, String prenom){
         this.idEleve = id;
         nomEleve = nom;
-        prenomEleve="";
+        prenomEleve=prenom;
         dateNaissanceEleve=null;
         idCategorieEleve=0;
         idCeintureEleve=0;

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -59,8 +60,15 @@ public class eleves extends AppCompatActivity {
         values = bdd.read();
 
         //log.v("test",values.toString());
-        ArrayAdapter<Eleve> listEleveAdaptater = new ArrayAdapter<Eleve>(this, android.R.layout.simple_list_item_1, values);
+        ArrayList<String> prenom = new ArrayList<>();
+        for (int i = 0; i < values.size(); i++){
+            prenom.add(values.get(i).getNomEleve()+ " "+values.get(i).getPrenomEleve());
+        }
+        Log.v("test",prenom.toString());
+        ArrayAdapter<String> listEleveAdaptater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, prenom);
         lvEleve.setAdapter(listEleveAdaptater);
+        //ArrayAdapter<Eleve> listEleveAdaptater = new ArrayAdapter<Eleve>(this, android.R.layout.simple_list_item_1, values);
+        //lvEleve.setAdapter(listEleveAdaptater);
     }
 
     private View.OnClickListener calendrierListener = new View.OnClickListener() {
