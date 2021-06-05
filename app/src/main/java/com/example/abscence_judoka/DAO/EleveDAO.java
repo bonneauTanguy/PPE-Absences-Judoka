@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -86,7 +87,7 @@ public class EleveDAO extends DAO<Eleve> {
 
             idCategorieEleve = curseurQuery.getInt(4);
             idCeintureEleve = curseurQuery.getInt(5);
-            eleveRetour = new Eleve(idEleve, nomEleve, prenomEleve, dateNaissance, idCategorieEleve, idCeintureEleve);
+            eleveRetour = new Eleve(nomEleve, prenomEleve, dateNaissance, idCategorieEleve, idCeintureEleve);
         }
         curseurQuery.close();
 
@@ -108,8 +109,13 @@ public class EleveDAO extends DAO<Eleve> {
         Cursor curseurQuery = db.query(TABLE_ELEVE /*new String[]{"IDELEVE, NOMELEVE, PRENOMELEVE"}*/,null, null, null, null, null, null);
         curseurQuery.moveToFirst();
         for(int i=1; i<= curseurQuery.getCount(); i++){
-
-            eleve= new Eleve(curseurQuery.getInt(0),curseurQuery.getString(1), curseurQuery.getString(2)/*,dateFormat.parse(curseurQuery.getString(4)), curseurQuery.getInt(5), curseurQuery.getInt(6)*/);
+            Date date = null;
+            try {
+                date = dateFormat.parse(curseurQuery.getString(3));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            eleve= new Eleve(curseurQuery.getString(1), curseurQuery.getString(2),date, curseurQuery.getInt(4), curseurQuery.getInt(5));
 
             eleves.add(eleve);
             curseurQuery.moveToNext();
@@ -127,7 +133,7 @@ public class EleveDAO extends DAO<Eleve> {
             idCategorieEleve = curseurQuery.getInt(4);
             idCeintureEleve = curseurQuery.getInt(5);
 
-            eleves.add(new Eleve(idEleve, nomEleve, prenomEleve, dateNaissance, idCategorieEleve, idCeintureEleve));
+            eleves.add(new Eleve(nomEleve, prenomEleve, dateNaissance, idCategorieEleve, idCeintureEleve));
 
             curseurQuery.moveToNext();
         }*/

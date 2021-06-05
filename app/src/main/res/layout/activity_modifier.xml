@@ -9,7 +9,7 @@
         android:id="@+id/textView2"
         android:layout_width="447dp"
         android:layout_height="31dp"
-        android:text="Ajouter un élève"
+        android:text="Modification élève"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25dp"
@@ -54,10 +54,10 @@
         android:text="Modifier"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.648"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.603" />
 
     <Button
         android:id="@+id/bRetour"
@@ -66,7 +66,6 @@
         android:text="Retour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.401"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sPrenom"
         app:layout_constraintVertical_bias="0.435" />
@@ -103,6 +102,14 @@
         app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toEndOf="@+id/listCeinture"
         app:layout_constraintTop_toBottomOf="@+id/sPrenom"
-        app:layout_constraintVertical_bias="0.248" />
+        app:layout_constraintVertical_bias="0.241" />
+
+    <Button
+        android:id="@+id/bSupprimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supprimer"
+        tools:layout_editor_absoluteX="417dp"
+        tools:layout_editor_absoluteY="371dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

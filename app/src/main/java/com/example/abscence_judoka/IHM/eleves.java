@@ -64,7 +64,7 @@ public class eleves extends AppCompatActivity {
         for (int i = 0; i < values.size(); i++){
             prenom.add(values.get(i).getNomEleve()+ " "+values.get(i).getPrenomEleve());
         }
-        Log.v("test",prenom.toString());
+        //Log.v("test",prenom.toString());
         ArrayAdapter<String> listEleveAdaptater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, prenom);
         lvEleve.setAdapter(listEleveAdaptater);
         //ArrayAdapter<Eleve> listEleveAdaptater = new ArrayAdapter<Eleve>(this, android.R.layout.simple_list_item_1, values);

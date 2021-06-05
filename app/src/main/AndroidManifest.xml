@@ -12,6 +12,7 @@
         <activity android:name=".IHM.eleves"></activity>
         <activity android:name=".IHM.calendrier" />
         <activity android:name=".IHM.formAjoutEleve" />
+        <activity android:name=".IHM.formModifEleve" />
         <activity android:name=".MainActivity">
 
             <intent-filter>
