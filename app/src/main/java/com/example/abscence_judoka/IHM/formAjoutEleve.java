@@ -1,11 +1,9 @@
 package com.example.abscence_judoka.IHM;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.abscence_judoka.DAO.CategorieDAO;
 import com.example.abscence_judoka.DAO.CeintureDAO;
 import com.example.abscence_judoka.DAO.EleveDAO;
-import com.example.abscence_judoka.MainActivity;
 import com.example.abscence_judoka.Metier.Categorie;
 import com.example.abscence_judoka.Metier.Ceinture;
 import com.example.abscence_judoka.Metier.Eleve;
@@ -40,11 +37,11 @@ public class formAjoutEleve extends AppCompatActivity {
     private Button ajouter;
     private Spinner categorie;
     private Spinner ceinture;
-    private SQLiteDatabase db;
-    private boolean verifVide;
 
     private ArrayList<Categorie> listCateg;
     private ArrayList<Ceinture> listCeint;
+
+    private ArrayList<Eleve> allEleves;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -81,7 +78,15 @@ public class formAjoutEleve extends AppCompatActivity {
         for (int i = 0; i < listCeint.size(); i++){
             a.add(listCeint.get(i).getLibelleCeinture());
         }
+
         bd.close();
+
+        allEleves = new ArrayList<Eleve>();
+        EleveDAO bdd2 = new EleveDAO(this);
+        bdd2.open();
+        allEleves = bdd2.read();
+        bdd2.close();
+
         ArrayAdapter<String> spinnerAdapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, a);
         ceinture.setAdapter(spinnerAdapter1);
     }
@@ -148,7 +153,9 @@ public class formAjoutEleve extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                Eleve eleve = new Eleve(nom.getText().toString(), prenom.getText().toString(), date, itCat.get(),itCeint.get());
+
+
+                Eleve eleve = new Eleve(allEleves.size()+1, nom.getText().toString(), prenom.getText().toString(), date, itCat.get(),itCeint.get());
                 insertionEleve(eleve);
                 viderChampsApresInsert();
             } else {

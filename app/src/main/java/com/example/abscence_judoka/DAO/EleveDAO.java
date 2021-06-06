@@ -87,7 +87,7 @@ public class EleveDAO extends DAO<Eleve> {
 
             idCategorieEleve = curseurQuery.getInt(4);
             idCeintureEleve = curseurQuery.getInt(5);
-            eleveRetour = new Eleve(nomEleve, prenomEleve, dateNaissance, idCategorieEleve, idCeintureEleve);
+            eleveRetour = new Eleve(idEleve, nomEleve, prenomEleve, dateNaissance, idCategorieEleve, idCeintureEleve);
         }
         curseurQuery.close();
 
@@ -115,7 +115,7 @@ public class EleveDAO extends DAO<Eleve> {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            eleve= new Eleve(curseurQuery.getString(1), curseurQuery.getString(2),date, curseurQuery.getInt(4), curseurQuery.getInt(5));
+            eleve= new Eleve(curseurQuery.getInt(0), curseurQuery.getString(1), curseurQuery.getString(2),date, curseurQuery.getInt(4), curseurQuery.getInt(5));
 
             eleves.add(eleve);
             curseurQuery.moveToNext();

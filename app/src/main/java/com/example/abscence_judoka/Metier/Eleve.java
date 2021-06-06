@@ -10,7 +10,8 @@ public class Eleve {
     private int idCategorieEleve;
     private int idCeintureEleve;
 
-    public Eleve(String nomEl, String prenEl, Date dateNaisEl, int idCat, int idCeint) {
+    public Eleve(int id, String nomEl, String prenEl, Date dateNaisEl, int idCat, int idCeint) {
+        this.idEleve = id;
         this.nomEleve = nomEl;
         this.prenomEleve = prenEl;
         this.dateNaissanceEleve = dateNaisEl;

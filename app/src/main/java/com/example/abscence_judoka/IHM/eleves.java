@@ -28,8 +28,10 @@ public class eleves extends AppCompatActivity {
     private Button calendrier;
     private Button accueil;
     private Button ajouter;
+    private ListView lvEleve;
+    public static Eleve idEleve;
 
-
+    private ArrayAdapter<String> listEleveAdaptater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,21 +54,31 @@ public class eleves extends AppCompatActivity {
                 Toast.makeText(eleves.this, nom, Toast.LENGTH_LONG).show();
             }
         });*/
-        ListView lvEleve = (ListView) findViewById(R.id.lvEleve);
+        lvEleve = (ListView) findViewById(R.id.lvEleve);
         ArrayList<Eleve> values = new ArrayList<Eleve>();
         EleveDAO bdd = new EleveDAO(this);
         bdd.open();
 
         values = bdd.read();
 
-        //log.v("test",values.toString());
         ArrayList<String> prenom = new ArrayList<>();
         for (int i = 0; i < values.size(); i++){
             prenom.add(values.get(i).getNomEleve()+ " "+values.get(i).getPrenomEleve());
         }
-        //Log.v("test",prenom.toString());
-        ArrayAdapter<String> listEleveAdaptater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, prenom);
+
+        listEleveAdaptater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, prenom);
         lvEleve.setAdapter(listEleveAdaptater);
+
+        ArrayList<Eleve> finalValues = values;
+        lvEleve.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                idEleve = finalValues.get(position);
+                Intent intent = new Intent(view.getContext(), formModifEleve.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
         //ArrayAdapter<Eleve> listEleveAdaptater = new ArrayAdapter<Eleve>(this, android.R.layout.simple_list_item_1, values);
         //lvEleve.setAdapter(listEleveAdaptater);
     }
