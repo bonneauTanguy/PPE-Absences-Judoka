@@ -60,7 +60,7 @@ public class CoursDAO {
         int idC, heureDebutCours, heureFinCours;
         Date dateCours;
         clRetour = null;
-
+        db.isOpen();
         Cursor curseurQuery = db.query(TABLE_COURS, null, COL_ID_COURS+" = "+id, null, null, null, null);
         curseurQuery.moveToFirst();
         if (!curseurQuery.isAfterLast()) {
@@ -84,7 +84,7 @@ public class CoursDAO {
         int idC, heureDebutCours, heureFinCours;
         Date dateCours;
         dateCours = null;
-
+        db.isOpen();
         Cursor curseurQuery = db.query(TABLE_COURS, null, null, null, null, null, null);
         curseurQuery.moveToFirst();
 

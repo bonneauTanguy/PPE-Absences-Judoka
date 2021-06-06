@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.025" />
 
     <CalendarView
-        android:id="@+id/calendarView"
+        android:id="@+id/cCours"
         android:layout_width="1127dp"
         android:layout_height="348dp"
         android:layout_marginBottom="240dp"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toStartOf="@+id/sHeureF"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:layout_constraintTop_toBottomOf="@+id/cCours"
         app:layout_constraintVertical_bias="0.19" />
 
     <Spinner
@@ -59,7 +59,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/sHeureD"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:layout_constraintTop_toBottomOf="@+id/cCours"
         app:layout_constraintVertical_bias="0.187" />
+
+    <Button
+        android:id="@+id/bAjCours"
+        android:layout_width="145dp"
+        android:layout_height="63dp"
+        android:text="Ajouter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cCours"
+        app:layout_constraintVertical_bias="0.717" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
